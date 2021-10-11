@@ -79,8 +79,7 @@ $(()=>{
     }
     // Agregar producto al carrito
     function agregarProducto(e){
-      $(e.target).text("Añadiendo...")
-                 .text ("Añadir otro");
+      $(e.target).text ("Añadir otro");
       let producto = seleccionados.find(producto => producto.id == e.target.id);
       if (producto != undefined) {
       producto.addCantidad();
