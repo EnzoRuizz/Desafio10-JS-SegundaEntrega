@@ -5,7 +5,7 @@ $(()=>{
         stock = respuesta;
     
 
-    //  Push productos
+/*     //  Push productos
     let productos = [];
     productos.push(new Producto(stock[0]));
     productos.push(new Producto(stock[1]));
@@ -15,8 +15,19 @@ $(()=>{
     productos.push(new Producto(stock[5]));
     productos.push(new Producto(stock[6]));
     productos.push(new Producto(stock[7]));
-    productos.push(new Producto(stock[8]));
-
+    productos.push(new Producto(stock[8])); */
+    $.get('../data/stock.json', (res) => {
+      res.forEach(element => {
+        $('#generarCards').append(` <div class="card m-3">
+        <div class="card-body">
+          <img src="${element.imagen}" class="card-img-top p-3" alt="${element.nombre}" >
+          <h2 class="card-title nombre">${element.nombre}</h2>
+          <p class="card-text texto">Precio: $${element.precio}</p>
+          <button id="${element.id}" class="comprar btn btn-success">COMPRAR</button>
+        </div>
+      </div>`)
+      });
+    })
     //////  Variables  /////////
 
     let containerMain = document.getElementById('generarCards');
@@ -61,7 +72,7 @@ $(()=>{
 
     /////////////  Funciones  /////////////
     // Crear card con el producto
-    function crearCard(producto){
+/*     function crearCard(producto){
         let div = document.createElement("div");
         div.id  = `ID ${producto.id}`;
         div.className = ('row', 'col-lg-4')
@@ -76,7 +87,7 @@ $(()=>{
                                     </div>`
       
         containerMain.appendChild(div);
-    }
+    } */
     // Agregar producto al carrito
     function agregarProducto(e){
       $(e.target).text ("Añadir otro");
